@@ -5,18 +5,24 @@ interface AppState {
   users: IUser[]
   searchString: string
   loading: boolean
-  perPage: 10 | 25 | 50
+  perPage: number
   pagesCount: number
   page: number
 }
 
+const localData = localStorage.getItem('data');
+let data;
+if (localData) {
+  data = JSON.parse(localData);
+}
+
 const initialState: AppState = {
-  users: [],
-  searchString: '',
+  users: data.users ? data.users : [],
+  searchString: data.searchString ? data.searchString : '',
   loading: false,
-  perPage: 10,
+  perPage: data.perPage ? data.perPage : 10,
   pagesCount: 0,
-  page: 1
+  page: data.page ? data.page : 1
 }
 
 export const appSlice = createSlice({
@@ -33,7 +39,7 @@ export const appSlice = createSlice({
     setSearchString(state, action: PayloadAction<string>) {
       state.searchString = action.payload
     },
-    setPerPage(state, action: PayloadAction<10 | 25 | 50>) {
+    setPerPage(state, action: PayloadAction<number>) {
       state.perPage = action.payload
     },
     setPage(state, action: PayloadAction<number>) {

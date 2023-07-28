@@ -1,4 +1,4 @@
-@import '../styles/variables.scss';
+@import '../../styles/variables.scss';
 
 .Card {
   display: flex;
@@ -49,7 +49,7 @@
     .comment_button {
       width: 64px;
       height: 57px;
-      background: url('../../public/write.png') center no-repeat;
+      background: url('../../../public/images/write.png') center no-repeat;
       background-color: $blue-color;
       border: none;
     }

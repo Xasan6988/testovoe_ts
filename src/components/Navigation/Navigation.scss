@@ -1,18 +1,18 @@
-@import '../styles/variables.scss';
+@import '../../styles/variables.scss';
 
 .Navigation {
   display: flex;
   align-items: center;
   .navigation_btn-prev {
     cursor: pointer;
-    background: url('../../public/prev.png') center;
+    background: url('../../../public/images/prev.png') center;
   }
   .navigation_btn-prev:disabled {
     background-color: $grey-bg-color;
   }
   .navigation_btn-next {
     cursor: pointer;
-    background: url('../../public/next.png') center;
+    background: url('../../../public/images/next.png') center;
   }
   button {
     cursor: pointer;

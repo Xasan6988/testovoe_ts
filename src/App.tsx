@@ -1,10 +1,10 @@
 import React, {useEffect} from 'react';
 import './styles/App.scss';
-import Data from './components/Data';
-import Select from './components/Select';
-import Search from './components/Search';
-import Navigation from './components/Navigation';
-import Loader from './components/Loader';
+import Data from './components/Users/Users';
+import Select from './components/Select/Select';
+import Search from './components/Search/Search';
+import Navigation from './components/Navigation/Navigation';
+import Loader from './components/Loader/Loader';
 import { useAppDispatch, useAppSelector } from './hooks/redux';
 import {appSlice} from './store/slices/app.slice';
 
@@ -14,20 +14,9 @@ const App: React.FC = (): JSX.Element => {
   const dispatch = useAppDispatch()
 
   useEffect(() => {
-    const localData = localStorage.getItem('data');
-    if (localData) {
-      const data = JSON.parse(localData);
-      dispatch(appSlice.actions.setPage(data.users))
-      dispatch(appSlice.actions.setSearchString(data.searchString))
-      dispatch(appSlice.actions.setPerPage(data.perPage))
-      dispatch(appSlice.actions.setPage(data.page))
-    }
-  }, [])
-
-  useEffect(() => {
     const data = {users, searchString, perPage, page}
     localStorage.setItem('data', JSON.stringify(data));
-  }, [searchString, perPage, page, users]);
+  }, [searchString, users, page, perPage]);
 
   useEffect(() => {
     dispatch(appSlice.actions.setPage(1));
@@ -37,7 +26,7 @@ const App: React.FC = (): JSX.Element => {
     <div className="App">
       <Search />
       {loading && <Loader/>}
-      {!loading && <Data data={users}/>}
+      {!loading && <Data users={users}/>}
       <div className="footer">
         <Navigation/>
         <Select/>
