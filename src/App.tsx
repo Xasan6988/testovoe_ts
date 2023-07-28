@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import './styles/App.scss';
-import Data from './components/Users/Users';
+import Users from './components/Users/Users';
 import Select from './components/Select/Select';
 import Search from './components/Search/Search';
 import Navigation from './components/Navigation/Navigation';
@@ -12,6 +12,8 @@ const App: React.FC = (): JSX.Element => {
 
   const {users, loading, page, perPage, searchString} = useAppSelector(state => state.app);
   const dispatch = useAppDispatch()
+
+
 
   useEffect(() => {
     const data = {users, searchString, perPage, page}
@@ -26,7 +28,8 @@ const App: React.FC = (): JSX.Element => {
     <div className="App">
       <Search />
       {loading && <Loader/>}
-      {!loading && <Data users={users}/>}
+
+      {!loading && <Users users={users} />}
       <div className="footer">
         <Navigation/>
         <Select/>

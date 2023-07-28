@@ -1,0 +1,44 @@
+@import '../../styles/variables.scss';
+
+.wrapper {
+  position: fixed;
+  background-color: $grey-bg-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  .modal {
+    position: relative;
+    padding: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 200px;
+      height: 200px;
+    }
+    .avatar {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      border: 1px solid $blue-color;
+    }
+    button {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background-color: inherit;
+      border: none;
+      cursor: pointer;
+    }
+  }
+}
+
+
