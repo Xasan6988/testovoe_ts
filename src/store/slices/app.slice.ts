@@ -1,4 +1,4 @@
-import {createSlice, PayloadAction} from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { IUser } from '../../interfaces/User.interface';
 import { IUserInfo } from '../../interfaces/UserInfo.interface';
 
@@ -13,21 +13,23 @@ interface AppState {
   page: number
 }
 
-const localData = localStorage.getItem('data');
-let data;
-if (localData) {
-  data = JSON.parse(localData);
-}
-
-const initialState: AppState = {
-  users: data.users ? data.users : [],
+let initialState: AppState = {
+  users: [],
   userInfo: {} as IUserInfo,
-  searchString: data.searchString ? data.searchString : '',
+  searchString: '',
   loading: false,
   userLoading: false,
-  perPage: data.perPage ? data.perPage : 10,
+  perPage: 10,
   pagesCount: 0,
-  page: data.page ? data.page : 1
+  page: 1
+}
+
+const localData = localStorage.getItem('data');
+let data;
+
+if (localData) {
+  data = JSON.parse(localData);
+  initialState = { ...data }
 }
 
 export const appSlice = createSlice({
@@ -42,11 +44,9 @@ export const appSlice = createSlice({
       state.users = action.payload;
     },
     fetchingUser(state) {
-      console.log('true')
       state.userLoading = true
     },
     setUserInfo(state, action: PayloadAction<IUserInfo>) {
-      console.log('false')
       state.userLoading = false;
       state.userInfo = action.payload
     },

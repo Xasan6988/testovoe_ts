@@ -5,7 +5,7 @@ const Loader: React.FC = (): JSX.Element => {
   return(
     <div className="Loader">
       <p className="loader_text">
-        Поиск проектов...
+        Поиск ...
       </p>
     </div>
   )

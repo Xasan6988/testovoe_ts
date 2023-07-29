@@ -1,14 +1,11 @@
 import React, { useEffect } from 'react';
 import { IUserInfo } from '../../interfaces/UserInfo.interface';
-
-import './Modal.scss'
-import { useAppDispatch, useAppSelector } from '../../hooks/redux';
-import { appSlice } from '../../store/slices/app.slice';
+import {  useAppSelector } from '../../hooks/redux';
 import Loader from '../Loader/Loader';
+import './Modal.scss'
 
 const Modal: React.FC<IUserInfo & { setShowModal(value: boolean): void }> = ({ html_url, public_repos, followers, avatar_url, setShowModal }): JSX.Element => {
 
-  const dispatch = useAppDispatch()
   const { userLoading } = useAppSelector(state => state.app);
 
   useEffect(() => {
